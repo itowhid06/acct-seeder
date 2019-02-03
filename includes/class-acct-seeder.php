@@ -28,6 +28,7 @@ class Acct_Seeder {
 
 		$this->get_tables_name();
 		$this->drop_db_tables();
+		$this->toggle_erp_plugin();
 		$this->call_dynamic_seeder();
 	}
 
@@ -90,17 +91,31 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * Toggle erp plugin state
+	 */
+	private function toggle_erp_plugin() {
+	    if ( ! function_exists('activate_plugin') ) {
+	        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	    }
+
+	    $wp_erp = 'wp-erp/wp-erp.php';
+
+	    if ( is_plugin_active( $wp_erp ) ) {
+	    	deactivate_plugins( $wp_erp );
+	    }
+
+	    activate_plugin( $wp_erp );
+	}
+
+	/**
 	 * DROP tables data before insert
 	 */
 	private function drop_db_tables() {
 		global $wpdb;
 
 		foreach ($this->tables as $table) {
-			$wpdb->query('DROP TABLE ' . $wpdb->prefix . $table);
+			$wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . $table);
 		}
-
-		// shell_exec('wp plugin toggle wp-erp');
-		// shell_exec('wp plugin toggle wp-erp');
 	}
 
 	/**
