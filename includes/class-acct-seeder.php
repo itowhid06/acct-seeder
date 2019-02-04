@@ -24,7 +24,7 @@ class Acct_Seeder {
 
 		$this->plugin_name = 'acct-seeder';
 		$this->faker = Faker\Factory::create();
-		$this->limit = 10;
+		$this->limit = 30;
 
 		$this->get_tables_name();
 		$this->drop_db_tables();
@@ -470,9 +470,16 @@ class Acct_Seeder {
 			$wpdb->insert( 
 				$table,
 				[ 
-					'first_name' => $this->faker->firstName,
-					'last_name'  => $this->faker->lastName,
-					'email'      => $this->faker->email
+					'first_name'  => $this->faker->firstName,
+					'last_name'   => $this->faker->lastName,
+					'email'       => $this->faker->email,
+					'phone'       => $this->faker->e164PhoneNumber,
+					'street_1'    => $this->faker->streetName,
+					'street_2'    => $this->faker->streetAddress,
+					'city'        => $this->faker->city,
+					'state'       => $this->faker->state,
+					'postal_code' => $this->faker->postcode,
+					'country'     => $this->faker->countryCode
 				]
 			);
 		}

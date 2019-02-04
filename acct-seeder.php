@@ -38,10 +38,11 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
     class AcctSeederCLI {
 
         public function run_seeder() {
-			WP_CLI::runcommand('plugin deactivate acct-seeder');
-			WP_CLI::runcommand('plugin activate acct-seeder');
+			WP_CLI::error('Unavailable !');
+			// WP_CLI::runcommand('plugin deactivate acct-seeder');
+			// WP_CLI::runcommand('plugin activate acct-seeder');
 
-            WP_CLI::success( 'Done!' );
+            // WP_CLI::success( 'Done!' );
         }
 
 	}
