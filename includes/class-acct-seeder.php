@@ -187,7 +187,6 @@ class Acct_Seeder {
 
 		$charts = ['Asset', 'Liability', 'Equity', 'Income', 'Expense', 'Asset & Liability', 'Bank'];
 
-		// insert
 		for ( $i = 0; $i < count($charts); $i++ ) {
 			$wpdb->insert( $table, [
 				'name' => $charts[$i], 
@@ -355,9 +354,94 @@ class Acct_Seeder {
 			'void'
 		];
 
-		// insert
 		for ( $i = 0; $i < count($statuses); $i++ ) {
 			$wpdb->insert( $table, [ 'type_name' => $statuses[$i] ] );
+		}
+	}
+
+	/**
+	 * erp_acct_product_categories
+	 */
+	private function seed_erp_acct_product_categories( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$categories = ['Mobile', 'Lifecare'];
+
+		for ( $i = 0; $i < count($categories); $i++ ) {
+			$wpdb->insert( $table, [ 'name' => $categories[$i] ] );
+		}
+	}
+
+	/**
+	 * erp_acct_product_types
+	 */
+	private function seed_erp_acct_product_types( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$types = ['Product', 'Service'];
+
+		for ( $i = 0; $i < count($types); $i++ ) {
+			$wpdb->insert( $table, [ 'name' => $types[$i] ] );
+		}
+	}
+
+	/**
+	 * erp_acct_products
+	 */
+	private function seed_erp_acct_products( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$products = [
+			'iPhone',
+			'Samsung',
+			'Huawei',
+			'Oneplus',
+			'Nokia',
+			'Motorola',
+			'Lenovo',
+			'Asus',
+			'Lava'
+		];
+
+		$services = [
+			'Graffiti Abatement',
+			'Dry-Cleaning',
+			'Mobile Locksmith',
+			'Diaper Delivery',
+			'Golf-Club Cleaning',
+			'Self-Defense Instructor',
+			'Pet Sitting',
+			'Court-Paper Serving',
+			'Personal Chef'
+		];
+
+		for ( $i = 0; $i < count($products); $i++ ) {
+			$cost_price = $this->faker->randomFloat(2, 8, 88);
+			$sale_price = $cost_price + $this->faker->numberBetween(3, 9);
+
+			$wpdb->insert( $table, [
+				'name'            => $products[$i],
+				'product_type_id' => 1,
+				'category_id'     => 1,
+				'cost_price'      => $cost_price,
+				'sale_price'      => $sale_price
+			] );
+		}
+
+		for ( $i = 0; $i < count($services); $i++ ) {
+			$cost_price = $this->faker->randomFloat(2, 9, 99);
+			$sale_price = $cost_price + $this->faker->numberBetween(4, 6);
+
+			$wpdb->insert( $table, [
+				'name'            => $services[$i],
+				'product_type_id' => 2,
+				'category_id'     => 2,
+				'cost_price'      => $cost_price,
+				'sale_price'      => $sale_price
+			] );
 		}
 	}
 

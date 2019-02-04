@@ -29,3 +29,22 @@ function activate_acct_seeder() {
 }
 
 register_activation_hook( __FILE__, 'activate_acct_seeder' );
+
+
+/**
+ * Add accounting seeder CLI feature
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    class AcctSeederCLI {
+
+        public function run_seeder() {
+			WP_CLI::runcommand('plugin deactivate acct-seeder');
+			WP_CLI::runcommand('plugin activate acct-seeder');
+
+            WP_CLI::success( 'Done!' );
+        }
+
+	}
+
+	WP_CLI::add_command( 'acct', 'AcctSeederCLI' );
+}
