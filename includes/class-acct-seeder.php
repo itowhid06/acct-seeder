@@ -167,9 +167,9 @@ class Acct_Seeder {
 				break;
 			default:
 				$id = null;
-
-			return $id;
 		}
+
+		return $id;
 	}
 
 	/* ======================================================
@@ -189,7 +189,10 @@ class Acct_Seeder {
 
 		// insert
 		for ( $i = 0; $i < count($charts); $i++ ) {
-			$wpdb->insert( $table, [ 'name' => $charts[$i], 'slug' => $this->slugify($charts[$i]) ] );
+			$wpdb->insert( $table, [
+				'name' => $charts[$i], 
+				'slug' => $this->slugify($charts[$i]) 
+			] );
 		}
 	}
 
@@ -330,6 +333,31 @@ class Acct_Seeder {
 					'people_types_id' => $this->faker->numberBetween(1, 5)
 				]
 			);
+		}
+	}
+
+	/**
+	 * erp_acct_trn_status_types
+	 */
+	private function seed_erp_acct_trn_status_types( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$statuses = [
+			'draft',
+			'awaiting_approval',
+			'pending',
+			'paid',
+			'partially_paid',
+			'approved',
+			'bounced',
+			'closed',
+			'void'
+		];
+
+		// insert
+		for ( $i = 0; $i < count($statuses); $i++ ) {
+			$wpdb->insert( $table, [ 'type_name' => $statuses[$i] ] );
 		}
 	}
 
