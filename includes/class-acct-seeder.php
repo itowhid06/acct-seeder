@@ -216,6 +216,101 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_journals
+	 */
+	private function seed_erp_acct_journals( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$wpdb->insert( $table, [
+			'trn_date'       => date('Y-m-d'),
+			'voucher_no'     => 1, // journal -> voucher_no
+			'voucher_amount' => 10000.00,
+			'particulars'    => 'Initial Journal Entry'
+		] );
+	}
+
+	/**
+	 * erp_acct_journal_details
+	 */
+	private function seed_erp_acct_journal_details( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$journal_details = [
+			[
+				'ledger_id'   => 1,
+				'particulars' => 'Cash In Hand',
+				'debit'       => 5000.00,
+				'credit'      => 0.00
+			],
+			[
+				'ledger_id'   => 2,
+				'particulars' => 'Cash At Bank',
+				'debit'       => 5000.00,
+				'credit'      => 0.00
+			],
+			[
+				'ledger_id'   => 45,
+				'particulars' => 'Revenue From Sale',
+				'debit'       => 0.00,
+				'credit'      => 10000.00
+			],
+		];
+
+		foreach ( $journal_details as $journal_detail ) {
+			$wpdb->insert( $table, [
+				'trn_no'      => 1,
+				'ledger_id'   => $journal_detail['ledger_id'],
+				'particulars' => $journal_detail['particulars'],
+				'debit'       => $journal_detail['debit'],
+				'credit'      => $journal_detail['credit']
+			] );
+		}
+	}
+
+	/**
+	 * erp_acct_ledger_details
+	 */
+	private function seed_erp_acct_ledger_details( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+
+		$ledger_details = [
+			[
+				'ledger_id'   => 1,
+				'particulars' => 'Cash In Hand',
+				'debit'       => 5000.00,
+				'credit'      => 0.00
+			],
+			[
+				'ledger_id'   => 2,
+				'particulars' => 'Cash At Bank',
+				'debit'       => 5000.00,
+				'credit'      => 0.00
+			],
+			[
+				'ledger_id'   => 45,
+				'particulars' => 'Revenue From Sale',
+				'debit'       => 0.00,
+				'credit'      => 10000.00
+			],
+		];
+
+		foreach ( $ledger_details as $ledger_detail ) {
+			$wpdb->insert( $table, [
+				'trn_no'      => 1,
+				'ledger_id'   => $ledger_detail['ledger_id'],
+				'particulars' => $ledger_detail['particulars'],
+				'debit'       => $ledger_detail['debit'],
+				'credit'      => $ledger_detail['credit'],
+				'trn_date'    => date('Y-m-d')
+			] );
+		}
+	}
+
+	/**
 	 * erp_acct_ledgers
 	 */
 	private function seed_erp_acct_ledgers( $table_name ) {
@@ -224,82 +319,82 @@ class Acct_Seeder {
 
 		$ledgers = [
 			'asset' => [
-				'Cash',
-				'Bank Balance',
-				'Accounts Receivable',
-				'Allowance for Doubtful Accounts',
-				'Interest Receivable',
-				'Inventory',
-				'Supplies',
-				'Prepaid Insurance',
-				'Prepaid Rent',
-				'Prepaid Salary',
-				'Land',
-				'Equipment',
-				'Furniture & Fixture',
-				'Buildings',
-				'Copyrights',
-				'Goodwill',
-				'Patents',
-				'Accoumulated Depreciation- Equipment',
-				'Accoumulated Depreciation- Buildings',
-				'Accoumulated Depreciation- Furniture & Fixture'
+				['name' => 'Cash', 'system' => 1],
+				['name' => 'Bank Balance', 'system' => 1],
+				['name' => 'Accounts Receivable', 'system' => null],
+				['name' => 'Allowance for Doubtful Accounts', 'system' => null],
+				['name' => 'Interest Receivable', 'system' => null],
+				['name' => 'Inventory', 'system' => null],
+				['name' => 'Supplies', 'system' => null],
+				['name' => 'Prepaid Insurance', 'system' => null],
+				['name' => 'Prepaid Rent', 'system' => null],
+				['name' => 'Prepaid Salary', 'system' => null],
+				['name' => 'Land', 'system' => null],
+				['name' => 'Equipment', 'system' => null],
+				['name' => 'Furniture & Fixture', 'system' => null],
+				['name' => 'Buildings', 'system' => null],
+				['name' => 'Copyrights', 'system' => null],
+				['name' => 'Goodwill', 'system' => null],
+				['name' => 'Patents', 'system' => null],
+				['name' => 'Accoumulated Depreciation- Equipment', 'system' => null],
+				['name' => 'Accoumulated Depreciation- Buildings', 'system' => null],
+				['name' => 'Accoumulated Depreciation- Furniture & Fixtur', 'system' => null]
 			],
 			
 			'liability' => [
-				'Notes Payable',
-				'Accounts Payable',
-				'Unearned Revenue',
-				'Salaries and Wages Payable',
-				'Unearned Rent Revenue',
-				'Interest Payable',
-				'Dividends Payable',
-				'Income Tax Payable',
-				'Sales Tax Payable',
-				'Bonds Payable',
-				'Discount on Bonds Payable',
-				'Pfemium on Bonds Payable',
-				'Mortgage Payable'
+				['name' => 'Notes Payable', 'system' => null],
+				['name' => 'Accounts Payable', 'system' => null],
+				['name' => 'Unearned Revenue', 'system' => null],
+				['name' => 'Salaries and Wages Payable', 'system' => null],
+				['name' => 'Unearned Rent Revenue', 'system' => null],
+				['name' => 'Interest Payable', 'system' => null],
+				['name' => 'Dividends Payable', 'system' => null],
+				['name' => 'Income Tax Payable', 'system' => null],
+				['name' => 'Sales Tax Payable', 'system' => null],
+				['name' => 'Bonds Payable', 'system' => null],
+				['name' => 'Discount on Bonds Payable', 'system' => null],
+				['name' => 'Pfemium on Bonds Payable', 'system' => null],
+				['name' => 'Mortgage Payable', 'system' => null]
 			],
 
 			'equity' => [
-				'Owner\'s Capital',
-				'Owner\'s  Drawings',
-				'Common Stock',
-				'Paid- in Capital in Excess of Par- Common Stock',
-				'Paid- in Capital in Excess of Par- Preferred  Stock',
-				'Preferred Stock',
-				'Treasury Stock',
-				'Retained Earnings',
-				'Dividends',
-				'Income Summary'
+				['name' => 'Owner\'s Capital', 'system' => null],
+				['name' => 'Owner\'s  Drawings', 'system' => null],
+				['name' => 'Common Stock', 'system' => null],
+				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => null],
+				['name' => 'Paid- in Capital in Excess of Par- Preferred Stock', 'system' => null],
+				['name' => 'Preferred Stock', 'system' => null],
+				['name' => 'Treasury Stock', 'system' => null],
+				['name' => 'Retained Earnings', 'system' => null],
+				['name' => 'Dividends', 'system' => null],
+				['name' => 'Income Summary', 'system' => null]
 			],
 
 			'income' => [
-				'Service Revenue',
-				'Sales Revenue',
-				'Sales Discounts',
-				'Sales Returns and Allowance',
-				'Interest Revenue',
-				'Gain on Disposal of Plant Assets'
+				['name' => 'Service Revenue', 'system' => null],
+				['name' => 'Sales Revenue', 'system' => null],
+				['name' => 'Sales Discounts', 'system' => null],
+				['name' => 'Sales Returns and Allowance', 'system' => null],
+				['name' => 'Interest Revenue', 'system' => null],
+				['name' => 'Gain on Disposal of Plant Assets', 'system' => null]
 			],
 
 			'expense' => [
-				'Advertising Expense',
-				'Amortization Expense',
-				'Bad Debt Expense',
-				'Cost of Goods Sold',
-				'Depreciation Expense',
-				'Freight -Out',
-				'Income Tax Expense',
-				'Insurance Expense',
-				'Interest Expense',
-				'Loss on Disposal of Plant Assets',
-				'Maintenance and Repairs Expense',
-				'Salaries and  wages Expense',
-				'Rent Expense',
-				'Supplies Expense',
-				'Utilites Expense'
+				['name' => 'Advertising Expense', 'system' => null],
+				['name' => 'Amortization Expense', 'system' => null],
+				['name' => 'Bad Debt Expense', 'system' => null],
+				['name' => 'Cost of Goods Sold', 'system' => null],
+				['name' => 'Depreciation Expense', 'system' => null],
+				['name' => 'Freight -Out', 'system' => null],
+				['name' => 'Income Tax Expense', 'system' => null],
+				['name' => 'Insurance Expense', 'system' => null],
+				['name' => 'Interest Expense', 'system' => null],
+				['name' => 'Loss on Disposal of Plant Assets', 'system' => null],
+				['name' => 'Maintenance and Repairs Expense', 'system' => null],
+				['name' => 'Salaries and  wages Expense', 'system' => null],
+				['name' => 'Rent Expense', 'system' => null],
+				['name' => 'Supplies Expense', 'system' => null],
+				['name' => 'Utilites Expense', 'system' => null]
 			]
 		];
 
@@ -309,8 +404,9 @@ class Acct_Seeder {
 					$table,
 					[ 
 						'chart_id' => $this->get_chart_id_by_slug($array_key),
-						'name'     => $value,
-						'slug'     => $this->slugify($value),
+						'name'     => $value['name'],
+						'slug'     => $this->slugify($value['name']),
+						'system'   => $this->slugify($value['system'])
 					]
 				);
 			}
@@ -343,19 +439,22 @@ class Acct_Seeder {
 		$table = $wpdb->prefix . $table_name;
 
 		$statuses = [
-			'draft',
-			'awaiting_approval',
-			'pending',
-			'paid',
-			'partially_paid',
-			'approved',
-			'bounced',
-			'closed',
-			'void'
+			'Draft',
+			'Awaiting Approval',
+			'Pending',
+			'Paid',
+			'Partially_paid',
+			'Approved',
+			'Bounced',
+			'Closed',
+			'Void'
 		];
 
 		for ( $i = 0; $i < count($statuses); $i++ ) {
-			$wpdb->insert( $table, [ 'type_name' => $statuses[$i] ] );
+			$wpdb->insert( $table, [
+				'type_name' => $statuses[$i],
+				'slug'      => $this->slugify( $statuses[$i] )
+			] );
 		}
 	}
 
@@ -446,6 +545,16 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_voucher_no
+	 */
+	private function seed_erp_acct_voucher_no( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$wpdb->insert( $table, [ 'type' => 'journal' ] );
+	}
+
+	/**
 	 * erp_peoplemeta
 	 */
 	private function seed_erp_people_types( $table_name ) {
@@ -479,7 +588,7 @@ class Acct_Seeder {
 					'city'        => $this->faker->city,
 					'state'       => $this->faker->state,
 					'postal_code' => $this->faker->postcode,
-					'country'     => $this->faker->countryCode
+					'country'     => $this->faker->country
 				]
 			);
 		}
