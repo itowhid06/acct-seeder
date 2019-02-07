@@ -74,8 +74,8 @@ class Acct_Seeder {
 			'erp_acct_purchase_account_details',
 			'erp_acct_purchase_details',
 			'erp_acct_tax_agencies',
+			'erp_acct_tax_cat_agency',
 			'erp_acct_tax_categories',
-			'erp_acct_tax_items',
 			'erp_acct_tax_pay',
 			'erp_acct_tax_sales_tax_categories',
 			'erp_acct_taxes',
@@ -459,13 +459,27 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_payment_methods
+	 */
+	private function seed_erp_acct_payment_methods( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$methods = ['Cash', 'Bank', 'Check'];
+
+		for ( $i = 0; $i < count($methods); $i++ ) {
+			$wpdb->insert( $table, [ 'name' => $methods[$i] ] );
+		}
+	}
+
+	/**
 	 * erp_acct_product_categories
 	 */
 	private function seed_erp_acct_product_categories( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
-		$categories = ['Mobile', 'Lifecare'];
+		$categories = ['Beverage', 'Plugin', 'Fast food', 'Chemical solvent'];
 
 		for ( $i = 0; $i < count($categories); $i++ ) {
 			$wpdb->insert( $table, [ 'name' => $categories[$i] ] );
@@ -494,27 +508,29 @@ class Acct_Seeder {
 		$table = $wpdb->prefix . $table_name;
 
 		$products = [
-			'iPhone',
-			'Samsung',
-			'Huawei',
-			'Oneplus',
-			'Nokia',
-			'Motorola',
-			'Lenovo',
-			'Asus',
-			'Lava'
+			[
+				'name'        => '7up',
+				'category_id' => 1,
+				'tax_cat_id'  => 3
+			],
+			[
+				'name'        => 'weDevs Dokan',
+				'category_id' => 2,
+				'tax_cat_id'  => 1
+			],
+			[
+				'name'        => 'Burger',
+				'category_id' => 3,
+				'tax_cat_id'  => 2
+			]
 		];
 
 		$services = [
-			'Graffiti Abatement',
-			'Dry-Cleaning',
-			'Mobile Locksmith',
-			'Diaper Delivery',
-			'Golf-Club Cleaning',
-			'Self-Defense Instructor',
-			'Pet Sitting',
-			'Court-Paper Serving',
-			'Personal Chef'
+			[
+				'name'        => 'Dry cleaning',
+				'category_id' => 4,
+				'tax_cat_id'  => 4
+			]
 		];
 
 		for ( $i = 0; $i < count($products); $i++ ) {
@@ -522,9 +538,10 @@ class Acct_Seeder {
 			$sale_price = $cost_price + $this->faker->numberBetween(3, 9);
 
 			$wpdb->insert( $table, [
-				'name'            => $products[$i],
+				'name'            => $products[$i]['name'],
 				'product_type_id' => 1,
-				'category_id'     => 1,
+				'category_id'     => $products[$i]['category_id'],
+				'tax_cat_id'      => $products[$i]['tax_cat_id'],
 				'cost_price'      => $cost_price,
 				'sale_price'      => $sale_price
 			] );
@@ -535,11 +552,272 @@ class Acct_Seeder {
 			$sale_price = $cost_price + $this->faker->numberBetween(4, 6);
 
 			$wpdb->insert( $table, [
-				'name'            => $services[$i],
+				'name'            => $services[$i]['name'],
 				'product_type_id' => 2,
-				'category_id'     => 2,
+				'category_id'     => $services[$i]['category_id'],
+				'tax_cat_id'      => $services[$i]['tax_cat_id'],
 				'cost_price'      => $cost_price,
 				'sale_price'      => $sale_price
+			] );
+		}
+	}
+
+	/**
+	 * erp_acct_tax_agencies
+	 */
+	private function seed_erp_acct_tax_agencies( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$agencies = ['Arizona Department of Revenue', 'State Board of Equalization'];
+
+		for ( $i = 0; $i < count($agencies); $i++ ) {
+			$wpdb->insert( $table, [ 'name' => $agencies[$i] ] );
+		}
+	}
+
+	/**
+	 * erp_acct_tax_cat_agency
+	 */
+	private function seed_erp_acct_tax_cat_agency( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$cat_agencies = [
+			[
+				'tax_id'         => 1,
+				'component_name' => 'Software Tax',
+				'tax_cat_id'     => 1,
+				'agency_id'      => 1,
+				'tax_rate'       => 5
+			],
+			[
+				'tax_id'         => 1,
+				'component_name' => 'Food Tax',
+				'tax_cat_id'     => 2,
+				'agency_id'      => 1,
+				'tax_rate'       => 4
+			],
+			[
+				'tax_id'         => 1,
+				'component_name' => 'Food Tax',
+				'tax_cat_id'     => 2,
+				'agency_id'      => 2,
+				'tax_rate'       => 4
+			],
+			[
+				'tax_id'         => 1,
+				'component_name' => 'Drink Tax',
+				'tax_cat_id'     => 3,
+				'agency_id'      => 1,
+				'tax_rate'       => 8
+			],
+			[
+				'tax_id'         => 1,
+				'component_name' => 'Housing Tax',
+				'tax_cat_id'     => 4,
+				'agency_id'      => 1,
+				'tax_rate'       => 10
+			],
+			[
+				'tax_id'         => 2,
+				'component_name' => 'Software Tax',
+				'tax_cat_id'     => 1,
+				'agency_id'      => 1,
+				'tax_rate'       => 7
+			],
+			[
+				'tax_id'         => 2,
+				'component_name' => 'Food Tax',
+				'tax_cat_id'     => 2,
+				'agency_id'      => 1,
+				'tax_rate'       => 12
+			],
+			[
+				'tax_id'         => 2,
+				'component_name' => 'Drink Tax',
+				'tax_cat_id'     => 3,
+				'agency_id'      => 1,
+				'tax_rate'       => 7
+			],
+			[
+				'tax_id'         => 2,
+				'component_name' => 'Drink Tax',
+				'tax_cat_id'     => 3,
+				'agency_id'      => 2,
+				'tax_rate'       => 12
+			],
+			[
+				'tax_id'         => 2,
+				'component_name' => 'Housing Tax',
+				'tax_cat_id'     => 4,
+				'agency_id'      => 1,
+				'tax_rate'       => 2
+			],
+			[
+				'tax_id'         => 3,
+				'component_name' => 'Software Tax',
+				'tax_cat_id'     => 1,
+				'agency_id'      => 1,
+				'tax_rate'       => 3
+			],
+			[
+				'tax_id'         => 3,
+				'component_name' => 'Drink Tax',
+				'tax_cat_id'     => 3,
+				'agency_id'      => 1,
+				'tax_rate'       => 17
+			]
+		];
+
+		for ( $i = 0; $i < count($cat_agencies); $i++ ) {
+			$wpdb->insert( $table, [
+				'tax_id'         => $cat_agencies[$i]['tax_id'],
+				'component_name' => $cat_agencies[$i]['component_name'],
+				'tax_cat_id'     => $cat_agencies[$i]['tax_cat_id'],
+				'agency_id'      => $cat_agencies[$i]['agency_id'],
+				'tax_rate'       => $cat_agencies[$i]['tax_rate']
+			] );
+		}
+	}
+	/**
+	 * erp_acct_tax_categories
+	 */
+	private function seed_erp_acct_tax_categories( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$tax_categories = [
+			[
+				'name'        => 'Software Service',
+				'description' => 'Software development'
+			],
+			[
+				'name'        => 'Food',
+				'description' => 'Eat healthy'
+			],
+			[
+				'name'        => 'Soft Drinks',
+				'description' => 'Beverage'
+			],
+			[
+				'name'        => 'Home',
+				'description' => 'Live long'
+			]
+		];
+
+		for ( $i = 0; $i < count($tax_categories); $i++ ) {
+			$wpdb->insert( $table, [
+				'name'        => $tax_categories[$i]['name'],
+				'description' => $tax_categories[$i]['description']
+			] );
+		}
+	}
+
+	/**
+	 * erp_acct_tax_sales_tax_categories
+	 */
+	private function seed_erp_acct_tax_sales_tax_categories( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$sales_tax_categories = [
+			[
+				'tax_id'                => 1,
+				'sales_tax_category_id' => 1,
+				'tax_rate'              => 5
+			],
+			[
+				'tax_id'                => 1,
+				'sales_tax_category_id' => 2,
+				'tax_rate'              => 8
+			],
+			[
+				'tax_id'                => 1,
+				'sales_tax_category_id' => 3,
+				'tax_rate'              => 8
+			],
+			[
+				'tax_id'                => 1,
+				'sales_tax_category_id' =>4,
+				'tax_rate'              => 10
+			],
+			[
+				'tax_id'                => 2,
+				'sales_tax_category_id' => 1,
+				'tax_rate'              => 7
+			],
+			[
+				'tax_id'                => 2,
+				'sales_tax_category_id' => 3,
+				'tax_rate'              => 19
+			],
+			[
+				'tax_id'                => 2,
+				'sales_tax_category_id' => 4,
+				'tax_rate'              => 2
+			],
+			[
+				'tax_id'                => 3,
+				'sales_tax_category_id' => 1,
+				'tax_rate'              => 3
+			],
+			[
+				'tax_id'                => 3,
+				'sales_tax_category_id' => 2,
+				'tax_rate'              => 8
+			],
+			[
+				'tax_id'                => 3,
+				'sales_tax_category_id' => 3,
+				'tax_rate'              => 17
+			],
+			[
+				'tax_id'                => 3,
+				'sales_tax_category_id' => 4,
+				'tax_rate'              => 3
+			],
+		];
+
+		for ( $i = 0; $i < count($sales_tax_categories); $i++ ) {
+			$wpdb->insert( $table, [
+				'tax_id'                => $sales_tax_categories[$i]['tax_id'],
+				'sales_tax_category_id' => $sales_tax_categories[$i]['sales_tax_category_id'],
+				'tax_rate'              => $sales_tax_categories[$i]['tax_rate']
+			] );
+		}
+	}
+
+	/**
+	 * erp_acct_taxes
+	 */
+	private function seed_erp_acct_taxes( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$taxes = [
+			[
+				'tax_rate_name' => 'California',
+				'tax_number'    => 100011,
+				'default'       => 1
+			],
+			[
+				'tax_rate_name' => 'Tucson',
+				'tax_number'    => 100012,
+				'default'       => 0
+			],
+			[
+				'tax_rate_name' => 'Arizona',
+				'tax_number'    => 100022,
+				'default'       => 0
+			],
+		];
+
+		for ( $i = 0; $i < count($taxes); $i++ ) {
+			$wpdb->insert( $table, [
+				'tax_rate_name' => $taxes[$i]['tax_rate_name'],
+				'tax_number'    => $taxes[$i]['tax_number'],
+				'default'       => $taxes[$i]['default']
 			] );
 		}
 	}
