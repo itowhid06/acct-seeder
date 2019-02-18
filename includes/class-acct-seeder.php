@@ -321,80 +321,78 @@ class Acct_Seeder {
 			'asset' => [
 				['name' => 'Cash', 'system' => 1],
 				['name' => 'Bank Balance', 'system' => 1],
-				['name' => 'Accounts Receivable', 'system' => null],
-				['name' => 'Allowance for Doubtful Accounts', 'system' => null],
-				['name' => 'Interest Receivable', 'system' => null],
-				['name' => 'Inventory', 'system' => null],
-				['name' => 'Supplies', 'system' => null],
-				['name' => 'Prepaid Insurance', 'system' => null],
-				['name' => 'Prepaid Rent', 'system' => null],
-				['name' => 'Prepaid Salary', 'system' => null],
-				['name' => 'Land', 'system' => null],
-				['name' => 'Equipment', 'system' => null],
-				['name' => 'Furniture & Fixture', 'system' => null],
-				['name' => 'Buildings', 'system' => null],
-				['name' => 'Copyrights', 'system' => null],
-				['name' => 'Goodwill', 'system' => null],
-				['name' => 'Patents', 'system' => null],
-				['name' => 'Accoumulated Depreciation- Equipment', 'system' => null],
-				['name' => 'Accoumulated Depreciation- Buildings', 'system' => null],
-				['name' => 'Accoumulated Depreciation- Furniture & Fixtur', 'system' => null]
+				['name' => 'Allowance for Doubtful Accounts', 'system' => 1],
+				['name' => 'Interest Receivable', 'system' => 1],
+				['name' => 'Inventory', 'system' => 1],
+				['name' => 'Supplies', 'system' => 1],
+				['name' => 'Prepaid Insurance', 'system' => 1],
+				['name' => 'Prepaid Rent', 'system' => 1],
+				['name' => 'Prepaid Salary', 'system' => 1],
+				['name' => 'Land', 'system' => 1],
+				['name' => 'Equipment', 'system' => 1],
+				['name' => 'Furniture & Fixture', 'system' => 1],
+				['name' => 'Buildings', 'system' => 1],
+				['name' => 'Copyrights', 'system' => 1],
+				['name' => 'Goodwill', 'system' => 1],
+				['name' => 'Patents', 'system' => 1],
+				['name' => 'Accoumulated Depreciation- Equipment', 'system' => 1],
+				['name' => 'Accoumulated Depreciation- Buildings', 'system' => 1],
+				['name' => 'Accoumulated Depreciation- Furniture & Fixtur', 'system' => 1]
 			],
 			
 			'liability' => [
-				['name' => 'Notes Payable', 'system' => null],
-				['name' => 'Accounts Payable', 'system' => null],
-				['name' => 'Unearned Revenue', 'system' => null],
-				['name' => 'Salaries and Wages Payable', 'system' => null],
-				['name' => 'Unearned Rent Revenue', 'system' => null],
-				['name' => 'Interest Payable', 'system' => null],
-				['name' => 'Dividends Payable', 'system' => null],
-				['name' => 'Income Tax Payable', 'system' => null],
-				['name' => 'Sales Tax Payable', 'system' => null],
-				['name' => 'Bonds Payable', 'system' => null],
-				['name' => 'Discount on Bonds Payable', 'system' => null],
-				['name' => 'Pfemium on Bonds Payable', 'system' => null],
-				['name' => 'Mortgage Payable', 'system' => null]
+				['name' => 'Notes Payable', 'system' => 1],
+				['name' => 'Unearned Revenue', 'system' => 1],
+				['name' => 'Salaries and Wages Payable', 'system' => 1],
+				['name' => 'Unearned Rent Revenue', 'system' => 1],
+				['name' => 'Interest Payable', 'system' => 1],
+				['name' => 'Dividends Payable', 'system' => 1],
+				['name' => 'Income Tax Payable', 'system' => 1],
+				['name' => 'Sales Tax Payable', 'system' => 1],
+				['name' => 'Bonds Payable', 'system' => 1],
+				['name' => 'Discount on Bonds Payable', 'system' => 1],
+				['name' => 'Pfemium on Bonds Payable', 'system' => 1],
+				['name' => 'Mortgage Payable', 'system' => 1]
 			],
 
 			'equity' => [
-				['name' => 'Owner\'s Capital', 'system' => null],
-				['name' => 'Owner\'s  Drawings', 'system' => null],
-				['name' => 'Common Stock', 'system' => null],
-				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => null],
-				['name' => 'Paid- in Capital in Excess of Par- Preferred Stock', 'system' => null],
-				['name' => 'Preferred Stock', 'system' => null],
-				['name' => 'Treasury Stock', 'system' => null],
-				['name' => 'Retained Earnings', 'system' => null],
-				['name' => 'Dividends', 'system' => null],
-				['name' => 'Income Summary', 'system' => null]
+				['name' => 'Owner\'s Capital', 'system' => 1],
+				['name' => 'Owner\'s  Drawings', 'system' => 1],
+				['name' => 'Common Stock', 'system' => 1],
+				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => 1],
+				['name' => 'Paid- in Capital in Excess of Par- Preferred Stock', 'system' => 1],
+				['name' => 'Preferred Stock', 'system' => 1],
+				['name' => 'Treasury Stock', 'system' => 1],
+				['name' => 'Retained Earnings', 'system' => 1],
+				['name' => 'Dividends', 'system' => 1],
+				['name' => 'Income Summary', 'system' => 1]
 			],
 
 			'income' => [
-				['name' => 'Service Revenue', 'system' => null],
-				['name' => 'Sales Revenue', 'system' => null],
-				['name' => 'Sales Discounts', 'system' => null],
-				['name' => 'Sales Returns and Allowance', 'system' => null],
-				['name' => 'Interest Revenue', 'system' => null],
-				['name' => 'Gain on Disposal of Plant Assets', 'system' => null]
+				['name' => 'Service Revenue', 'system' => 1],
+				['name' => 'Sales Revenue', 'system' => 1],
+				['name' => 'Sales Discounts', 'system' => 1],
+				['name' => 'Sales Returns and Allowance', 'system' => 1],
+				['name' => 'Interest Revenue', 'system' => 1],
+				['name' => 'Gain on Disposal of Plant Assets', 'system' => 1]
 			],
 
 			'expense' => [
-				['name' => 'Advertising Expense', 'system' => null],
-				['name' => 'Amortization Expense', 'system' => null],
-				['name' => 'Bad Debt Expense', 'system' => null],
-				['name' => 'Cost of Goods Sold', 'system' => null],
-				['name' => 'Depreciation Expense', 'system' => null],
-				['name' => 'Freight -Out', 'system' => null],
-				['name' => 'Income Tax Expense', 'system' => null],
-				['name' => 'Insurance Expense', 'system' => null],
-				['name' => 'Interest Expense', 'system' => null],
-				['name' => 'Loss on Disposal of Plant Assets', 'system' => null],
-				['name' => 'Maintenance and Repairs Expense', 'system' => null],
-				['name' => 'Salaries and  wages Expense', 'system' => null],
-				['name' => 'Rent Expense', 'system' => null],
-				['name' => 'Supplies Expense', 'system' => null],
-				['name' => 'Utilites Expense', 'system' => null]
+				['name' => 'Advertising Expense', 'system' => 1],
+				['name' => 'Amortization Expense', 'system' => 1],
+				['name' => 'Bad Debt Expense', 'system' => 1],
+				['name' => 'Cost of Goods Sold', 'system' => 1],
+				['name' => 'Depreciation Expense', 'system' => 1],
+				['name' => 'Freight -Out', 'system' => 1],
+				['name' => 'Income Tax Expense', 'system' => 1],
+				['name' => 'Insurance Expense', 'system' => 1],
+				['name' => 'Interest Expense', 'system' => 1],
+				['name' => 'Loss on Disposal of Plant Assets', 'system' => 1],
+				['name' => 'Maintenance and Repairs Expense', 'system' => 1],
+				['name' => 'Salaries and  wages Expense', 'system' => 1],
+				['name' => 'Rent Expense', 'system' => 1],
+				['name' => 'Supplies Expense', 'system' => 1],
+				['name' => 'Utilites Expense', 'system' => 1]
 			]
 		];
 
@@ -443,7 +441,7 @@ class Acct_Seeder {
 			'Awaiting Approval',
 			'Pending',
 			'Paid',
-			'Partially_paid',
+			'Partially Paid',
 			'Approved',
 			'Bounced',
 			'Closed',
@@ -534,8 +532,8 @@ class Acct_Seeder {
 		];
 
 		for ( $i = 0; $i < count($products); $i++ ) {
-			$cost_price = $this->faker->randomFloat(2, 8, 88);
-			$sale_price = $cost_price + $this->faker->numberBetween(3, 9);
+			$cost_price = $this->faker->numberBetween(20, 60);
+			$sale_price = $cost_price + $this->faker->numberBetween(2, 6);
 
 			$wpdb->insert( $table, [
 				'name'            => $products[$i]['name'],
@@ -548,8 +546,8 @@ class Acct_Seeder {
 		}
 
 		for ( $i = 0; $i < count($services); $i++ ) {
-			$cost_price = $this->faker->randomFloat(2, 9, 99);
-			$sale_price = $cost_price + $this->faker->numberBetween(4, 6);
+			$cost_price = $this->faker->numberBetween(40, 80);
+			$sale_price = $cost_price + $this->faker->numberBetween(4, 8);
 
 			$wpdb->insert( $table, [
 				'name'            => $services[$i]['name'],
