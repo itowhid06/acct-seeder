@@ -189,8 +189,8 @@ class Acct_Seeder {
 
 		for ( $i = 0; $i < count($charts); $i++ ) {
 			$wpdb->insert( $table, [
-				'name' => $charts[$i], 
-				'slug' => $this->slugify($charts[$i]) 
+				'name' => $charts[$i],
+				'slug' => $this->slugify($charts[$i])
 			] );
 		}
 	}
@@ -339,7 +339,7 @@ class Acct_Seeder {
 				['name' => 'Accoumulated Depreciation- Buildings', 'system' => 1],
 				['name' => 'Accoumulated Depreciation- Furniture & Fixtur', 'system' => 1]
 			],
-			
+
 			'liability' => [
 				['name' => 'Notes Payable', 'system' => 1],
 				['name' => 'Unearned Revenue', 'system' => 1],
@@ -398,9 +398,9 @@ class Acct_Seeder {
 
 		foreach ( array_keys( $ledgers ) as $array_key ) {
 			foreach ( $ledgers[$array_key] as $value ) {
-				$wpdb->insert( 
+				$wpdb->insert(
 					$table,
-					[ 
+					[
 						'chart_id' => $this->get_chart_id_by_slug($array_key),
 						'name'     => $value['name'],
 						'slug'     => $this->slugify($value['name']),
@@ -419,9 +419,9 @@ class Acct_Seeder {
 		$table = $wpdb->prefix . $table_name;
 
 		for ( $i = 0; $i < $this->limit; $i++ ) {
-			$wpdb->insert( 
+			$wpdb->insert(
 				$table,
-				[ 
+				[
 					'people_id'       => $i + 1,
 					'people_types_id' => $this->faker->numberBetween(1, 5)
 				]
@@ -509,17 +509,23 @@ class Acct_Seeder {
 			[
 				'name'        => '7up',
 				'category_id' => 1,
-				'tax_cat_id'  => 3
+				'tax_cat_id'  => 3,
+				'cost_price'  => 40,
+				'sale_price'  => 50
 			],
 			[
 				'name'        => 'weDevs Dokan',
 				'category_id' => 2,
-				'tax_cat_id'  => 1
+				'tax_cat_id'  => 1,
+				'cost_price'  => 90,
+				'sale_price'  => 100
 			],
 			[
 				'name'        => 'Burger',
 				'category_id' => 3,
-				'tax_cat_id'  => 2
+				'tax_cat_id'  => 2,
+				'cost_price'  => 120,
+				'sale_price'  => 150
 			]
 		];
 
@@ -527,35 +533,31 @@ class Acct_Seeder {
 			[
 				'name'        => 'Dry cleaning',
 				'category_id' => 4,
-				'tax_cat_id'  => 4
+				'tax_cat_id'  => 4,
+				'cost_price'  => 200,
+				'sale_price'  => 250
 			]
 		];
 
 		for ( $i = 0; $i < count($products); $i++ ) {
-			$cost_price = $this->faker->numberBetween(20, 60);
-			$sale_price = $cost_price + $this->faker->numberBetween(2, 6);
-
 			$wpdb->insert( $table, [
 				'name'            => $products[$i]['name'],
 				'product_type_id' => 1,
 				'category_id'     => $products[$i]['category_id'],
 				'tax_cat_id'      => $products[$i]['tax_cat_id'],
-				'cost_price'      => $cost_price,
-				'sale_price'      => $sale_price
+				'cost_price'      => $products[$i]['cost_price'],
+				'sale_price'      => $products[$i]['sale_price']
 			] );
 		}
 
 		for ( $i = 0; $i < count($services); $i++ ) {
-			$cost_price = $this->faker->numberBetween(40, 80);
-			$sale_price = $cost_price + $this->faker->numberBetween(4, 8);
-
 			$wpdb->insert( $table, [
 				'name'            => $services[$i]['name'],
 				'product_type_id' => 2,
 				'category_id'     => $services[$i]['category_id'],
 				'tax_cat_id'      => $services[$i]['tax_cat_id'],
-				'cost_price'      => $cost_price,
-				'sale_price'      => $sale_price
+				'cost_price'      => $services[$i]['cost_price'],
+				'sale_price'      => $services[$i]['sale_price']
 			] );
 		}
 	}
@@ -852,9 +854,9 @@ class Acct_Seeder {
 		$table = $wpdb->prefix . $table_name;
 
 		for ( $i = 0; $i < $this->limit; $i++ ) {
-			$wpdb->insert( 
+			$wpdb->insert(
 				$table,
-				[ 
+				[
 					'first_name'  => $this->faker->firstName,
 					'last_name'   => $this->faker->lastName,
 					'email'       => $this->faker->email,
