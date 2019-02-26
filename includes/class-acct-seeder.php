@@ -78,6 +78,7 @@ class Acct_Seeder {
 			'erp_acct_tax_categories',
 			'erp_acct_tax_pay',
 			'erp_acct_tax_sales_tax_categories',
+			'erp_acct_tax_rate_names',
 			'erp_acct_taxes',
 			'erp_acct_transfer_voucher',
 			'erp_acct_trn_status_types',
@@ -789,6 +790,22 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_tax_rate_names
+	 */
+	private function seed_erp_acct_tax_rate_names( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$names = ['California', 'Tucson', 'Arizona'];
+
+		for ( $i = 0; $i < count($names); $i++ ) {
+			$wpdb->insert( $table, [
+				'name' => $names[$i]
+			] );
+		}
+	}
+
+	/**
 	 * erp_acct_taxes
 	 */
 	private function seed_erp_acct_taxes( $table_name ) {
@@ -797,27 +814,27 @@ class Acct_Seeder {
 
 		$taxes = [
 			[
-				'tax_rate_name' => 'California',
-				'tax_number'    => 100011,
-				'default'       => 1
+				'tax_rate_id' => 1,
+				'tax_number'  => 100011,
+				'default'     => 1
 			],
 			[
-				'tax_rate_name' => 'Tucson',
-				'tax_number'    => 100012,
-				'default'       => 0
+				'tax_rate_id' => 2,
+				'tax_number'  => 100012,
+				'default'     => 0
 			],
 			[
-				'tax_rate_name' => 'Arizona',
-				'tax_number'    => 100022,
-				'default'       => 0
+				'tax_rate_id' => 3,
+				'tax_number'  => 100022,
+				'default'     => 0
 			],
 		];
 
 		for ( $i = 0; $i < count($taxes); $i++ ) {
 			$wpdb->insert( $table, [
-				'tax_rate_name' => $taxes[$i]['tax_rate_name'],
-				'tax_number'    => $taxes[$i]['tax_number'],
-				'default'       => $taxes[$i]['default']
+				'tax_rate_id' => $taxes[$i]['tax_rate_id'],
+				'tax_number'  => $taxes[$i]['tax_number'],
+				'default'     => $taxes[$i]['default']
 			] );
 		}
 	}
