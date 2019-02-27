@@ -30,6 +30,9 @@ class Acct_Seeder {
 		$this->drop_db_tables();
 		$this->toggle_erp_plugin();
 		$this->call_dynamic_seeder();
+
+		// Update wp_options
+		update_option( 'erp_tracking_notice', 'hide' );
 	}
 
 	/**
@@ -271,6 +274,81 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_ledger_categories
+	 */
+	private function seed_erp_acct_ledger_categories( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$categories = [
+			[
+				'name'      => 'Furniture',
+				'chart_id'  => 1,
+				'parent_id' => null,
+				'system'    => null
+			],
+			[
+				'name'      => 'Chair',
+				'chart_id'  => 1,
+				'parent_id' => 1,
+				'system'    => null
+			],
+			[
+				'name'      => 'Table',
+				'chart_id'  => 1,
+				'parent_id' => 1,
+				'system'    => null
+			],
+			[
+				'name'      => 'Device',
+				'chart_id'  => 1,
+				'parent_id' => 0,
+				'system'    => null
+			],
+			[
+				'name'      => 'MacBook',
+				'chart_id'  => 1,
+				'parent_id' => 4,
+				'system'    => null
+			],
+			[
+				'name'      => 'AB Bank',
+				'chart_id'  => 7,
+				'parent_id' => null,
+				'system'    => null
+			],
+			[
+				'name'      => 'AB Bank Mirpur Branch',
+				'chart_id'  => 7,
+				'parent_id' => 6,
+				'system'    => null
+			],
+			[
+				'name'      => 'Direct Expense',
+				'chart_id'  => 5,
+				'parent_id' => null,
+				'system'    => 1
+			],
+			[
+				'name'      => 'Indirect Expense',
+				'chart_id'  => 5,
+				'parent_id' => null,
+				'system'    => 1
+			],
+		];
+
+		foreach ( $categories as $category ) {
+			$wpdb->insert( $table, [
+				'name'      => $category['name'],
+				'slug'      => $this->slugify( $category['name'] ),
+				'chart_id'  => $category['chart_id'],
+				'parent_id' => $category['parent_id'],
+				'system'    => $category['system']
+			] );
+		}
+	}
+
+	/**
 	 * erp_acct_ledger_details
 	 */
 	private function seed_erp_acct_ledger_details( $table_name ) {
@@ -329,29 +407,29 @@ class Acct_Seeder {
 				['name' => 'Prepaid Insurance', 'system' => 1],
 				['name' => 'Prepaid Rent', 'system' => 1],
 				['name' => 'Prepaid Salary', 'system' => 1],
-				['name' => 'Land', 'system' => 1],
-				['name' => 'Equipment', 'system' => 1],
+				['name' => 'Land', 'system' => null],
+				['name' => 'Equipment', 'system' => null],
 				['name' => 'Furniture & Fixture', 'system' => 1],
-				['name' => 'Buildings', 'system' => 1],
+				['name' => 'Buildings', 'system' => null],
 				['name' => 'Copyrights', 'system' => 1],
 				['name' => 'Goodwill', 'system' => 1],
 				['name' => 'Patents', 'system' => 1],
-				['name' => 'Accoumulated Depreciation- Equipment', 'system' => 1],
+				['name' => 'Accoumulated Depreciation- Equipment', 'system' => null],
 				['name' => 'Accoumulated Depreciation- Buildings', 'system' => 1],
 				['name' => 'Accoumulated Depreciation- Furniture & Fixtur', 'system' => 1]
 			],
 
 			'liability' => [
 				['name' => 'Notes Payable', 'system' => 1],
-				['name' => 'Unearned Revenue', 'system' => 1],
+				['name' => 'Unearned Revenue', 'system' => null],
 				['name' => 'Salaries and Wages Payable', 'system' => 1],
 				['name' => 'Unearned Rent Revenue', 'system' => 1],
-				['name' => 'Interest Payable', 'system' => 1],
+				['name' => 'Interest Payable', 'system' => null],
 				['name' => 'Dividends Payable', 'system' => 1],
-				['name' => 'Income Tax Payable', 'system' => 1],
+				['name' => 'Income Tax Payable', 'system' => null],
 				['name' => 'Sales Tax Payable', 'system' => 1],
 				['name' => 'Bonds Payable', 'system' => 1],
-				['name' => 'Discount on Bonds Payable', 'system' => 1],
+				['name' => 'Discount on Bonds Payable', 'system' => null],
 				['name' => 'Pfemium on Bonds Payable', 'system' => 1],
 				['name' => 'Mortgage Payable', 'system' => 1]
 			],
@@ -360,7 +438,7 @@ class Acct_Seeder {
 				['name' => 'Owner\'s Capital', 'system' => 1],
 				['name' => 'Owner\'s  Drawings', 'system' => 1],
 				['name' => 'Common Stock', 'system' => 1],
-				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => 1],
+				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => null],
 				['name' => 'Paid- in Capital in Excess of Par- Preferred Stock', 'system' => 1],
 				['name' => 'Preferred Stock', 'system' => 1],
 				['name' => 'Treasury Stock', 'system' => 1],
@@ -381,11 +459,11 @@ class Acct_Seeder {
 			'expense' => [
 				['name' => 'Advertising Expense', 'system' => 1],
 				['name' => 'Amortization Expense', 'system' => 1],
-				['name' => 'Bad Debt Expense', 'system' => 1],
+				['name' => 'Bad Debt Expense', 'system' => null],
 				['name' => 'Cost of Goods Sold', 'system' => 1],
 				['name' => 'Depreciation Expense', 'system' => 1],
 				['name' => 'Freight -Out', 'system' => 1],
-				['name' => 'Income Tax Expense', 'system' => 1],
+				['name' => 'Income Tax Expense', 'system' => null],
 				['name' => 'Insurance Expense', 'system' => 1],
 				['name' => 'Interest Expense', 'system' => 1],
 				['name' => 'Loss on Disposal of Plant Assets', 'system' => 1],
@@ -405,7 +483,7 @@ class Acct_Seeder {
 						'chart_id' => $this->get_chart_id_by_slug($array_key),
 						'name'     => $value['name'],
 						'slug'     => $this->slugify($value['name']),
-						'system'   => $this->slugify($value['system'])
+						'system'   => $value['system']
 					]
 				);
 			}
