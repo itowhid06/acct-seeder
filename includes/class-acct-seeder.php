@@ -612,7 +612,7 @@ class Acct_Seeder {
 			[
 				'name'        => 'Dry cleaning',
 				'category_id' => 4,
-				'tax_cat_id'  => 4,
+				'tax_cat_id'  => null,
 				'cost_price'  => 200,
 				'sale_price'  => 250
 			]
