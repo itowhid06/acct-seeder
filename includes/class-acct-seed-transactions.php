@@ -74,26 +74,28 @@ class Acct_Transactions_Seeder {
         // $people = erp_get_peoples( [ 'type' => 'customer' ] );
         // $people_length = count( $people );
 
-        // $rand_index = $this->faker->numberBetween( 1, $people_length - 1 );
 
 		// for ( $i = 2; $i < $this->limit; $i++ ) {
+		// 	$rand_index = $this->faker->numberBetween( 1, $people_length - 1 );
+		// 	$amount = $this->faker->numberBetween(99, 999);
+
 		// 	$wpdb->insert( $table, [
-		// 		'voucher_no' => $i,
-        //         'customer_id' => $people[$rand_index]['id'],
-        //         'customer_name' => $people[$rand_index]['first_name'] . ' ' . $people[$rand_index]['last_name'],
-        //         'trn_date' => $this->faker->date(),
-        //         'due_date' =>  $this->faker->date(),
-        //         'billing_address' => $this->faker->country . ' ' . $this->faker->address,
-        //         'amount' => $this->faker->
-        //         'discount' =>
-        //         'discount_type' =>
-        //         'tax_rate_id' =>
-        //         'tax' =>
-        //         'estimate' =>
-        //         'attachments' =>
-        //         'status' =>
-        //         'particulars' =>
-        //         'created_at' =>
+		// 		'voucher_no'      => $i,
+		// 		'customer_id'     => $people[$rand_index]['id'],
+		// 		'customer_name'   => $people[$rand_index]['first_name'] . ' ' . $people[$rand_index]['last_name'],
+		// 		'trn_date'        => $this->faker->date(),
+		// 		'due_date'        => $this->faker->date(),
+		// 		'billing_address' => $this->faker->country . ' ' . $this->faker->address,
+		// 		'amount'          => $amount,
+		// 		'discount'        => 20,
+		// 		'discount_type'   => 'discount-percent',
+		// 		'tax_rate_id'     => 1,
+		// 		'tax'             => 40,
+		// 		'estimate'        => 0,
+		// 		'attachments'     => [],
+		// 		'status'          => 2,
+		// 		'particulars'     => '',
+		// 		'created_at'      => $this->faker->date()
 		// 	] );
 		// }
 

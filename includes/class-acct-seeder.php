@@ -78,6 +78,7 @@ class Acct_Seeder {
 			'erp_acct_purchase_details',
 			'erp_acct_tax_agencies',
 			'erp_acct_tax_cat_agency',
+			'erp_acct_tax_agency_details',
 			'erp_acct_tax_categories',
 			'erp_acct_tax_pay',
 			'erp_acct_tax_sales_tax_categories',
@@ -246,19 +247,22 @@ class Acct_Seeder {
 				'ledger_id'   => 1,
 				'particulars' => 'Cash In Hand',
 				'debit'       => 5000.00,
-				'credit'      => 0.00
+				'credit'      => 0.00,
+				'created_at'  => date('Y-m-d')
 			],
 			[
 				'ledger_id'   => 2,
 				'particulars' => 'Cash At Bank',
 				'debit'       => 5000.00,
-				'credit'      => 0.00
+				'credit'      => 0.00,
+				'created_at'  => date('Y-m-d')
 			],
 			[
 				'ledger_id'   => 45,
 				'particulars' => 'Revenue From Sale',
 				'debit'       => 0.00,
-				'credit'      => 10000.00
+				'credit'      => 10000.00,
+				'created_at'  => date('Y-m-d')
 			],
 		];
 
@@ -268,7 +272,8 @@ class Acct_Seeder {
 				'ledger_id'   => $journal_detail['ledger_id'],
 				'particulars' => $journal_detail['particulars'],
 				'debit'       => $journal_detail['debit'],
-				'credit'      => $journal_detail['credit']
+				'credit'      => $journal_detail['credit'],
+				'created_at'  => $journal_detail['created_at']
 			] );
 		}
 	}
@@ -427,7 +432,6 @@ class Acct_Seeder {
 				['name' => 'Interest Payable', 'system' => null],
 				['name' => 'Dividends Payable', 'system' => 1],
 				['name' => 'Income Tax Payable', 'system' => null],
-				['name' => 'Sales Tax Payable', 'system' => 1],
 				['name' => 'Bonds Payable', 'system' => 1],
 				['name' => 'Discount on Bonds Payable', 'system' => null],
 				['name' => 'Pfemium on Bonds Payable', 'system' => 1],
