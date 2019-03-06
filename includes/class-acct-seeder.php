@@ -258,7 +258,7 @@ class Acct_Seeder {
 				'created_at'  => date('Y-m-d')
 			],
 			[
-				'ledger_id'   => 45,
+				'ledger_id'   => 31,
 				'particulars' => 'Revenue From Sale',
 				'debit'       => 0.00,
 				'credit'      => 10000.00,
