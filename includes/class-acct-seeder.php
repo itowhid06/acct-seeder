@@ -170,6 +170,9 @@ class Acct_Seeder {
 			case 'expense':
 				$id = 5;
 				break;
+			case 'asset_liability':
+				$id = 6;
+				break;
 			case 'bank':
 				$id = 7;
 				break;
@@ -480,6 +483,8 @@ class Acct_Seeder {
 				['name' => 'Supplies Expense', 'system' => 1],
 				['name' => 'Utilites Expense', 'system' => 1]
 			],
+
+			// 'asset_liability' => [],
 
 			'bank' => [
 				['name' => 'Standard Chartered Bank', 'system' => null],
