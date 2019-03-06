@@ -170,6 +170,9 @@ class Acct_Seeder {
 			case 'expense':
 				$id = 5;
 				break;
+			case 'bank':
+				$id = 7;
+				break;
 			default:
 				$id = null;
 		}
@@ -375,8 +378,8 @@ class Acct_Seeder {
 				'credit'      => 0.00
 			],
 			[
-				'ledger_id'   => 45,
-				'particulars' => 'Revenue From Sale',
+				'ledger_id'   => 31,
+				'particulars' => 'Owner\'s Capital',
 				'debit'       => 0.00,
 				'credit'      => 10000.00
 			],
@@ -476,6 +479,10 @@ class Acct_Seeder {
 				['name' => 'Rent Expense', 'system' => 1],
 				['name' => 'Supplies Expense', 'system' => 1],
 				['name' => 'Utilites Expense', 'system' => 1]
+			],
+
+			'bank' => [
+				['name' => 'Standard Chartered Bank', 'system' => null],
 			]
 		];
 
