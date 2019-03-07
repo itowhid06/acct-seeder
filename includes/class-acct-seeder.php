@@ -371,13 +371,7 @@ class Acct_Seeder {
 			[
 				'ledger_id'   => 1,
 				'particulars' => 'Cash In Hand',
-				'debit'       => 5000.00,
-				'credit'      => 0.00
-			],
-			[
-				'ledger_id'   => 2,
-				'particulars' => 'Cash At Bank',
-				'debit'       => 5000.00,
+				'debit'       => 10000.00,
 				'credit'      => 0.00
 			],
 			[
@@ -410,7 +404,6 @@ class Acct_Seeder {
 		$ledgers = [
 			'asset' => [
 				['name' => 'Cash', 'system' => 1],
-				['name' => 'Bank Balance', 'system' => 1],
 				['name' => 'Allowance for Doubtful Accounts', 'system' => 1],
 				['name' => 'Interest Receivable', 'system' => 1],
 				['name' => 'Inventory', 'system' => 1],
