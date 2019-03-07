@@ -187,12 +187,14 @@ class Acct_Seeder {
 	|
 	| Methods for seed
 	|
+	| Note: If seeder method starts with _ (underscore), they won't call dynamically
+	|
 	| =================================== */
 
 	/**
 	 * erp_acct_chart_of_accounts
 	 */
-	private function seed_erp_acct_chart_of_accounts( $table_name ) {
+	private function _seed_erp_acct_chart_of_accounts( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
@@ -397,7 +399,7 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_ledgers
 	 */
-	private function seed_erp_acct_ledgers( $table_name ) {
+	private function _seed_erp_acct_ledgers( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
@@ -471,7 +473,7 @@ class Acct_Seeder {
 				['name' => 'Interest Expense', 'system' => 1],
 				['name' => 'Loss on Disposal of Plant Assets', 'system' => 1],
 				['name' => 'Maintenance and Repairs Expense', 'system' => 1],
-				['name' => 'Salaries and  wages Expense', 'system' => 1],
+				['name' => 'Salaries and wages Expense', 'system' => 1],
 				['name' => 'Rent Expense', 'system' => 1],
 				['name' => 'Supplies Expense', 'system' => 1],
 				['name' => 'Utilites Expense', 'system' => 1]
@@ -520,7 +522,7 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_trn_status_types
 	 */
-	private function seed_erp_acct_trn_status_types( $table_name ) {
+	private function _seed_erp_acct_trn_status_types( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
@@ -547,7 +549,7 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_payment_methods
 	 */
-	private function seed_erp_acct_payment_methods( $table_name ) {
+	private function _seed_erp_acct_payment_methods( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
@@ -575,7 +577,7 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_product_types
 	 */
-	private function seed_erp_acct_product_types( $table_name ) {
+	private function _seed_erp_acct_product_types( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
@@ -937,9 +939,9 @@ class Acct_Seeder {
 	}
 
 	/**
-	 * erp_peoplemeta
+	 * erp_people_types
 	 */
-	private function seed_erp_people_types( $table_name ) {
+	private function _seed_erp_people_types( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
