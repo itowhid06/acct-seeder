@@ -814,66 +814,54 @@ class Acct_Seeder {
 		$sales_tax_categories = [
 			[
 				'tax_id'                => 1,
-				'sales_tax_category_id' => 1,
-				'tax_rate'              => 5
+				'sales_tax_category_id' => 1
 			],
 			[
 				'tax_id'                => 1,
-				'sales_tax_category_id' => 2,
-				'tax_rate'              => 8
+				'sales_tax_category_id' => 2
 			],
 			[
 				'tax_id'                => 1,
-				'sales_tax_category_id' => 3,
-				'tax_rate'              => 8
+				'sales_tax_category_id' => 3
 			],
 			[
 				'tax_id'                => 1,
-				'sales_tax_category_id' =>4,
-				'tax_rate'              => 10
+				'sales_tax_category_id' => 4
 			],
 			[
 				'tax_id'                => 2,
-				'sales_tax_category_id' => 1,
-				'tax_rate'              => 7
+				'sales_tax_category_id' => 1
 			],
 			[
 				'tax_id'                => 2,
-				'sales_tax_category_id' => 3,
-				'tax_rate'              => 19
+				'sales_tax_category_id' => 3
 			],
 			[
 				'tax_id'                => 2,
-				'sales_tax_category_id' => 4,
-				'tax_rate'              => 2
+				'sales_tax_category_id' => 4
 			],
 			[
 				'tax_id'                => 3,
-				'sales_tax_category_id' => 1,
-				'tax_rate'              => 3
+				'sales_tax_category_id' => 1
 			],
 			[
 				'tax_id'                => 3,
-				'sales_tax_category_id' => 2,
-				'tax_rate'              => 8
+				'sales_tax_category_id' => 2
 			],
 			[
 				'tax_id'                => 3,
-				'sales_tax_category_id' => 3,
-				'tax_rate'              => 17
+				'sales_tax_category_id' => 3
 			],
 			[
 				'tax_id'                => 3,
-				'sales_tax_category_id' => 4,
-				'tax_rate'              => 3
+				'sales_tax_category_id' => 4
 			],
 		];
 
 		for ( $i = 0; $i < count($sales_tax_categories); $i++ ) {
 			$wpdb->insert( $table, [
 				'tax_id'                => $sales_tax_categories[$i]['tax_id'],
-				'sales_tax_category_id' => $sales_tax_categories[$i]['sales_tax_category_id'],
-				'tax_rate'              => $sales_tax_categories[$i]['tax_rate']
+				'sales_tax_category_id' => $sales_tax_categories[$i]['sales_tax_category_id']
 			] );
 		}
 	}
