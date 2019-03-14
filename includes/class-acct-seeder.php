@@ -81,7 +81,6 @@ class Acct_Seeder {
 			'erp_acct_tax_agency_details',
 			'erp_acct_tax_categories',
 			'erp_acct_tax_pay',
-			'erp_acct_tax_sales_tax_categories',
 			'erp_acct_taxes',
 			'erp_acct_transfer_voucher',
 			'erp_acct_trn_status_types',
@@ -799,68 +798,6 @@ class Acct_Seeder {
 			$wpdb->insert( $table, [
 				'name'        => $tax_categories[$i]['name'],
 				'description' => $tax_categories[$i]['description']
-			] );
-		}
-	}
-
-	/**
-	 * erp_acct_tax_sales_tax_categories
-	 */
-	private function seed_erp_acct_tax_sales_tax_categories( $table_name ) {
-		global $wpdb;
-		$table = $wpdb->prefix . $table_name;
-
-		$sales_tax_categories = [
-			[
-				'tax_id'                => 1,
-				'sales_tax_category_id' => 1
-			],
-			[
-				'tax_id'                => 1,
-				'sales_tax_category_id' => 2
-			],
-			[
-				'tax_id'                => 1,
-				'sales_tax_category_id' => 3
-			],
-			[
-				'tax_id'                => 1,
-				'sales_tax_category_id' => 4
-			],
-			[
-				'tax_id'                => 2,
-				'sales_tax_category_id' => 1
-			],
-			[
-				'tax_id'                => 2,
-				'sales_tax_category_id' => 3
-			],
-			[
-				'tax_id'                => 2,
-				'sales_tax_category_id' => 4
-			],
-			[
-				'tax_id'                => 3,
-				'sales_tax_category_id' => 1
-			],
-			[
-				'tax_id'                => 3,
-				'sales_tax_category_id' => 2
-			],
-			[
-				'tax_id'                => 3,
-				'sales_tax_category_id' => 3
-			],
-			[
-				'tax_id'                => 3,
-				'sales_tax_category_id' => 4
-			],
-		];
-
-		for ( $i = 0; $i < count($sales_tax_categories); $i++ ) {
-			$wpdb->insert( $table, [
-				'tax_id'                => $sales_tax_categories[$i]['tax_id'],
-				'sales_tax_category_id' => $sales_tax_categories[$i]['sales_tax_category_id']
 			] );
 		}
 	}
