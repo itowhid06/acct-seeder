@@ -209,13 +209,13 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_currency_info
 	 */
-	private function seed_erp_acct_currency_info( $table_name ) {
+	private function _seed_erp_acct_currency_info( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
 		$currencies = [
-			['name' => 'Dollar', 'sign' => '$'],
-			['name' => 'Euro', 'sign' => '€']
+			['name' => 'USD', 'sign' => '$'],
+			['name' => 'EUR', 'sign' => '€']
 		];
 
 		for ( $i = 0; $i < count($currencies); $i++ ) {
@@ -320,18 +320,6 @@ class Acct_Seeder {
 				'name'      => 'MacBook',
 				'chart_id'  => 1,
 				'parent_id' => 4,
-				'system'    => null
-			],
-			[
-				'name'      => 'AB Bank',
-				'chart_id'  => 7,
-				'parent_id' => null,
-				'system'    => null
-			],
-			[
-				'name'      => 'AB Bank Mirpur Branch',
-				'chart_id'  => 7,
-				'parent_id' => 6,
 				'system'    => null
 			],
 			[
