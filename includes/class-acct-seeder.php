@@ -363,7 +363,7 @@ class Acct_Seeder {
 				'credit'      => 0.00
 			],
 			[
-				'ledger_id'   => 31,
+				'ledger_id'   => 30,
 				'particulars' => 'Owner\'s Capital',
 				'debit'       => 0.00,
 				'credit'      => 10000.00
@@ -426,8 +426,7 @@ class Acct_Seeder {
 			],
 
 			'equity' => [
-				['name' => 'Owner\'s Capital', 'system' => 1],
-				['name' => 'Owner\'s  Drawings', 'system' => 1],
+				['name' => 'Owner\'s Equity', 'system' => 1],
 				['name' => 'Common Stock', 'system' => 1],
 				['name' => 'Paid- in Capital in Excess of Par- Common Stock', 'system' => null],
 				['name' => 'Paid- in Capital in Excess of Par- Preferred Stock', 'system' => 1],
