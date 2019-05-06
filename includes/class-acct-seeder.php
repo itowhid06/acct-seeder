@@ -68,7 +68,7 @@ class Acct_Seeder {
 			'erp_acct_pay_purchase',
 			'erp_acct_pay_purchase_details',
 			'erp_acct_payment_methods',
-			'erp_acct_people_details',
+			'erp_acct_people_account_details',
 			'erp_acct_people_trn',
 			'erp_acct_product_categories',
 			'erp_acct_product_details',
