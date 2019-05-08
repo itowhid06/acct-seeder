@@ -488,6 +488,47 @@ class Acct_Seeder {
 	}
 
 	/**
+	 * erp_acct_financial_years
+	 */
+	private function seed_erp_acct_financial_years( $table_name ) {
+		global $wpdb;
+		$table = $wpdb->prefix . $table_name;
+
+		$f_years = [
+			[
+				'name'        => 'FY: 2018',
+				'start_date'  => '2018-01-01',
+				'end_date'    => '2018-12-31',
+				'description' => 'Financial Year 2018',
+				'created_at'  => date('Y-m-d'),
+				'created_by'  => 1
+			],
+			[
+				'name'        => 'FY: 2019',
+				'start_date'  => '2019-01-01',
+				'end_date'    => '2019-12-31',
+				'description' => 'Financial Year 2019',
+				'created_at'  => date('Y-m-d'),
+				'created_by'  => 1
+			]
+		];
+
+		foreach ( $f_years as $f_year ) {
+			$wpdb->insert(
+				$table,
+				[
+					'name'        => $f_year['name'],
+					'start_date'  => $f_year['start_date'],
+					'end_date'    => $f_year['end_date'],
+					'description' => $f_year['description'],
+					'created_at'  => date('Y-m-d'),
+					'created_by'  => 1
+				]
+			);
+		}
+	}
+
+	/**
 	 * erp_people_type_relations
 	 */
 	private function seed_erp_people_type_relations( $table_name ) {
