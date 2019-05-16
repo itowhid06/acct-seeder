@@ -364,7 +364,7 @@ class Acct_Seeder {
 				'credit'      => 0.00
 			],
 			[
-				'ledger_id'   => 30,
+				'ledger_id'   => 29,
 				'particulars' => 'Owner\'s Capital',
 				'debit'       => 0.00,
 				'credit'      => 10000.00
@@ -555,12 +555,11 @@ class Acct_Seeder {
 
 		$statuses = [
 			'Draft',
-			'Awaiting Approval',
+			'Awaiting Payment',
 			'Pending',
 			'Paid',
 			'Partially Paid',
 			'Approved',
-			'Bounced',
 			'Closed',
 			'Void'
 		];
