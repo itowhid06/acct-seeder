@@ -62,7 +62,7 @@ class Acct_Seeder {
 			'erp_acct_ledger_settings',
 			'erp_acct_ledgers',
 			'erp_acct_financial_years',
-			'erp_acct_opening_balance',
+			'erp_acct_opening_balances',
 			'erp_acct_pay_bill',
 			'erp_acct_pay_bill_details',
 			'erp_acct_pay_purchase',
