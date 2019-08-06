@@ -251,21 +251,14 @@ class Acct_Seeder {
 
 		$journal_details = [
 			[
-				'ledger_id'   => 1,
+				'ledger_id'   => 7,
 				'particulars' => 'Cash In Hand',
-				'debit'       => 5000.00,
+				'debit'       => 10000.00,
 				'credit'      => 0.00,
 				'created_at'  => date('Y-m-d')
 			],
 			[
-				'ledger_id'   => 2,
-				'particulars' => 'Cash At Bank',
-				'debit'       => 5000.00,
-				'credit'      => 0.00,
-				'created_at'  => date('Y-m-d')
-			],
-			[
-				'ledger_id'   => 31,
+				'ledger_id'   => 94,
 				'particulars' => 'Revenue From Sale',
 				'debit'       => 0.00,
 				'credit'      => 10000.00,
@@ -358,13 +351,13 @@ class Acct_Seeder {
 
 		$ledger_details = [
 			[
-				'ledger_id'   => 1,
+				'ledger_id'   => 7,
 				'particulars' => 'Cash In Hand',
 				'debit'       => 10000.00,
 				'credit'      => 0.00
 			],
 			[
-				'ledger_id'   => 29,
+				'ledger_id'   => 86,
 				'particulars' => 'Owner\'s Capital',
 				'debit'       => 0.00,
 				'credit'      => 10000.00
