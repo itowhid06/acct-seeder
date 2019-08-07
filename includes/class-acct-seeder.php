@@ -483,7 +483,7 @@ class Acct_Seeder {
 	/**
 	 * erp_acct_financial_years
 	 */
-	private function seed_erp_acct_financial_years( $table_name ) {
+	private function _seed_erp_acct_financial_years( $table_name ) {
 		global $wpdb;
 		$table = $wpdb->prefix . $table_name;
 
